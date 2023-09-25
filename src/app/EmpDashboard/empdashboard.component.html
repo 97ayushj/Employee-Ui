@@ -1,0 +1,28 @@
+<div class ="container-fluid">
+    <div>
+    <input type="text" placeholder="Search by gender" style="width: 450px; padding: 2px 20px; margin: 10px 0px;" [(ngModel)]="filterGender">
+    <input type="text" placeholder="Search by name" style="width: 450px; padding: 2px 20px; margin: 10px 0px;" [(ngModel)]="filterName">
+    <input type="text" placeholder="Search by id" style="width: 450px; padding: 2px 20px; margin: 10px 0px;" [(ngModel)]="filterId">
+    <input type="text" placeholder="Search by department" style="width: 450px; padding: 2px 20px; margin: 10px 0px;" [(ngModel)]="filterDepartment">
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="onClick()">Refresh Employee Data</button>
+    <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Department</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let emp of employees | filterNamePipe: filterName: filterGender: filterDepartment: filterId">
+          <tr>
+            <th scope="row">{{emp.id}}</th>
+            <td>{{emp.name}}</td>
+            <td>{{emp.gender}}</td>
+            <td>{{emp.department}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
